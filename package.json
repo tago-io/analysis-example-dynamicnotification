@@ -1,0 +1,22 @@
+{
+  "name": "analysis-example-simple",
+  "version": "1.0.0",
+  "description": "Simple example using Tago Analysis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tago-io/analysis-example-simple.git"
+  },
+  "author": "Tago LLC",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tago-io/analysis-example-simple/issues"
+  },
+  "homepage": "https://github.com/tago-io/analysis-example-simple#readme",
+  "dependencies": {
+    "tago": "^2.0.8"
+  }
+}
