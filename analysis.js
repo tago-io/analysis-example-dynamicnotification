@@ -1,5 +1,5 @@
 'use strict';
-const Analysis = require('tago/Analysis');
+const Analysis = require('tago/analysis');
 
 function myanalysis(context, scope) {
     context.log('my context:', context);
