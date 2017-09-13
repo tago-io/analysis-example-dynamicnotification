@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/tago-io/analysis-example-simple#readme",
   "dependencies": {
-    "tago": "^2.0.15"
+    "tago": "^4.2.12"
   }
 }
