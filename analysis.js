@@ -1,14 +1,17 @@
-'use strict';
 const Analysis = require('tago/analysis');
 
-function myanalysis(context, scope) {
+// This is a hello world example to the Tago Analysis
+// The function myAnalysis will be ran when you execute your analysis
+function myAnalysis(context, scope) {
+    // This will log "Hello World" at the Tago Analysis console
     context.log("Hello World");
     
-    //Example, passing context to console
-    context.log('my context:', context);
+    // This will log the context to the Tago Analysis console
+    context.log('Context:', context);
 
-    //Example, passing scope to console
+    // This will log the scope to the Tago Analysis console
     context.log('my scope:', scope);
 }
 
-module.exports = new Analysis(myanalysis, 'MY-ANALYSIS-TOKEN-HERE');
+// The analysis token in only necessary to run the analysis outside Tago
+module.exports = new Analysis(myAnalysis, 'MY-ANALYSIS-TOKEN-HERE');
