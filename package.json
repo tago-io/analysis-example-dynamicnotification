@@ -1,22 +1,17 @@
 {
-  "name": "analysis-example-simple",
-  "version": "1.0.0",
-  "description": "Simple example using Tago Analysis",
+  "name": "@tago-io/analysis-example-simple",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Simple example using TagoIO Analysis",
   "main": "analysis.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tago-io/analysis-example-simple.git"
-  },
+  "repository": "tago-io/analysis-example-simple",
   "author": "Tago LLC",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tago-io/analysis-example-simple/issues"
   },
   "homepage": "https://github.com/tago-io/analysis-example-simple#readme",
   "dependencies": {
-    "tago": "^6.1.0"
+    "@tago-io/sdk": "^10.0.0-beta.21"
   }
 }
