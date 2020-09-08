@@ -4,5 +4,6 @@ You can just upload the `analysis.js` file.
 
 or
 
-You can run locally, you should have last node version and install all dependencies running `npm install` on your terminal in this project folder,
-after that, you can run the project just calling analysis, `node analysis.js`;
+Send notifications using analysis. It's include example for Email, SMS and Push Notification to TagoRUN Users.
+In order for this example to work, you must create an action by variable and set to run this analysis.
+Once the action is triggered with your conditions, the data will be sent to this analysis.
