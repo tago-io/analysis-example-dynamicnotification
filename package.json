@@ -12,6 +12,6 @@
   },
   "homepage": "https://github.com/tago-io/analysis-example-simple#readme",
   "dependencies": {
-    "@tago-io/sdk": "^10.0.0-beta.21"
+    "@tago-io/sdk": "10.7.6"
   }
 }

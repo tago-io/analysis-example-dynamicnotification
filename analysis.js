@@ -32,7 +32,7 @@ async function init(context, scope) {
   const account = new Account({ token: environment_variables.account_token });
 
   // Get the device ID from the scope and retrieve device information.
-  const device_id = scope[0].origin;
+  const device_id = scope[0].device;
   const device_info = await account.devices.info(device_id);
 
   // Get the device name and tags from the device.
