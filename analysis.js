@@ -6,34 +6,27 @@
  ** In order for this example to work, you must create an action by variable and set to run this analysis.
  ** Once the action is triggered with your conditions, the data will be sent to this analysis.
  **
- ** Environment Variables
- ** In order to use this analysis, you must setup the Environment Variable table.
- **   account_token: Your account token. Check bellow how to get this.
- **
- ** Steps to generate an account_token:
- ** 1 - Enter the following link: https://admin.tago.io/account/
- ** 2 - Select your Profile.
- ** 3 - Enter Tokens tab.
- ** 4 - Generate a new Token with Expires Never.
- ** 5 - Press the Copy Button and place at the Environment Variables tab of this analysis.
+ ** How to use:
+ ** To analysis works, you need to add a new policy in your account. Steps to add a new policy:
+ **  1 - Click the button "Add Policy" at this url: https://admin.tago.io/am;
+ **  2 - In the Target selector, select the Analysis with the field set as "ID" and choose your Analysis in the list;
+ **  3 - Click the "Click to add a new permission" element and select "Device" with the rule "Access" with the field as "Any";
+ **  4 - To save your new Policy, click the save button in the bottom right corner;
  */
-const { Analysis, Account, Utils, Services } = require('@tago-io/sdk');
+const { Analysis, Utils, Services, Resources } = require('@tago-io/sdk');
 
 async function init(context, scope) {
   if (!scope[0]) return context.log('This analysis must be triggered by an action.');
 
-  context.log('Analysis started');
+  context.debug('Analysis started');
   // Get the environment variables.
   const environment_variables = Utils.envToJson(context.environment);
   if (!environment_variables.account_token) return context.log('Missing "account_token" environment variable');
   else if (environment_variables.account_token.length !== 36) return context.log('Invalid "account_token" in the environment variable');
 
-  // Instance the Account class
-  const account = new Account({ token: environment_variables.account_token });
-
   // Get the device ID from the scope and retrieve device information.
   const device_id = scope[0].device;
-  const device_info = await account.devices.info(device_id);
+  const device_info = await Resources.devices.info(device_id);
 
   // Get the device name and tags from the device.
   // [TAG KEY]    [TAG VALUE]
