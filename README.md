@@ -4,12 +4,12 @@ You can just upload the `analysis.js` file.
 
 or
 
-Send notifications using analysis. It's include example for Email, SMS and Push Notification to TagoRUN Users.
-In order for this example to work, you must create an action by variable and set to run this analysis.
+Send notifications using Analysis. This script includes an example of Email, SMS and Push Notifications being sent to TagoRUN Users.
+In order for this example to work, you must create an action by variable and set it to trigger this analysis.
 Once the action is triggered with your conditions, the data will be sent to this analysis.
 
 
-## How to use on TagoIO
+## How to use at TagoIO (Internal Mode)
 
 In order to use this analysis, you must to add a new policy in your account.<br>
 

@@ -13,16 +13,12 @@
  **  3 - Click the "Click to add a new permission" element and select "Device" with the rule "Access" with the field as "Any";
  **  4 - To save your new Policy, click the save button in the bottom right corner;
  */
-const { Analysis, Utils, Services, Resources } = require('@tago-io/sdk');
+const { Analysis, Services, Resources } = require('@tago-io/sdk');
 
 async function init(context, scope) {
   if (!scope[0]) return context.log('This analysis must be triggered by an action.');
 
-  context.debug('Analysis started');
-  // Get the environment variables.
-  const environment_variables = Utils.envToJson(context.environment);
-  if (!environment_variables.account_token) return context.log('Missing "account_token" environment variable');
-  else if (environment_variables.account_token.length !== 36) return context.log('Invalid "account_token" in the environment variable');
+  context.log('Analysis started');
 
   // Get the device ID from the scope and retrieve device information.
   const device_id = scope[0].device;
