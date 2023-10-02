@@ -63,7 +63,7 @@ async function init(context, scope) {
   }
 
   if (userID_tag) {
-    await account.run.notificationCreate(userID_tag.value, {
+    await Resources.run.notificationCreate(userID_tag.value, {
       title: 'Notification Alert',
       message: `You received a notification for the device: ${device_name}. Variable: ${scope[0].variable}, Value: ${scope[0].value}`,
     }).then(context.log).catch(context.log);
