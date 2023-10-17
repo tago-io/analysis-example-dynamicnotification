@@ -1,24 +1,29 @@
 /*
- ** Analysis Example
- ** Sending dynamic notification
+ ** Notification Analysis Example
+ ** Dynamically Sending Notifications
  **
- ** Send notifications using analysis. It's include example for Email, SMS and Push Notification to TagoRUN Users.
- ** In order for this example to work, you must create an action by variable and set to run this analysis.
- ** Once the action is triggered with your conditions, the data will be sent to this analysis.
+ ** This script demonstrates how to send notifications via Email, SMS, and Push to TagoRUN Users using analysis. 
+ ** To execute this example, you must first set up an action by variable to trigger this analysis.
+ ** Once the action meets your specified conditions, the corresponding data will be dispatched for analysis.
  **
- ** How to use:
- ** To analysis works, you need to add a new policy in your account. Steps to add a new policy:
- **  1 - Click the button "Add Policy" at this url: https://admin.tago.io/am;
- **  2 - In the Target selector, select the Analysis with the field set as "ID" and choose your Analysis in the list;
- **  3 - Click the "Click to add a new permission" element and select "Device" with the rule "Access" with the field as "Any";
- **  4 - To save your new Policy, click the save button in the bottom right corner;
+ ** Usage Instructions:
+ ** In order for this analysis to function correctly, a new policy must be added to your account. Here are the steps for adding a new policy:
+ **  1 - Navigate to https://admin.tago.io/am and click on "Add Policy";
+ **  2 - In the Target selector, locate "ID" under Analysis field and choose your desired Analysis from the list;
+ **  3 - Click on "Click to add a new permission", select "Device", and set rule as "Access" with "Any" field;
+ **  4 - Click on "Click to add a new permission" again, select "Service", and set rules as "Send Email" and "Send SMS";
+ **  5 - Once more click on "Click to add a new permission", choose "Run User", set rule as "Create Notification" with field set as "Any";
+ **  6 - To finalize your new Policy, hit the save button located in the bottom right corner of the screen.
  */
+
 const { Analysis, Services, Resources } = require('@tago-io/sdk');
 
 async function init(context, scope) {
-  if (!scope[0]) return context.log('This analysis must be triggered by an action.');
+  if (!scope[0]) {
+    return context.log('This analysis must be triggered by an action.');
+  }
 
-  context.log('Analysis started');
+  console.log('Analysis started');
 
   // Get the device ID from the scope and retrieve device information.
   const device_id = scope[0].device;
@@ -48,30 +53,30 @@ async function init(context, scope) {
       to: email_tag.value,
       subject: 'Notification alert',
       message: `You received a notification for the device: ${device_name}. Variable: ${scope[0].variable}, Value: ${scope[0].value}`,
-    }).then(context.log).catch(context.log);
+    }).then(console.log).catch(console.log);
   } else {
-    context.log('Email not found for this device.');
+    console.log('Email not found for this device.');
   }
 
   if (phone_tag) {
     await sms_service.send({
       to: phone_tag.value,
       message: `You received a notification for the device: ${device_name}. Variable: ${scope[0].variable}, Value: ${scope[0].value}`,
-    }).then(context.log).catch(context.log);
+    }).then(console.log).catch(console.log);
   } else {
-    context.log('Phone number not found for this device.');
+    console.log('Phone number not found for this device.');
   }
 
   if (userID_tag) {
     await Resources.run.notificationCreate(userID_tag.value, {
       title: 'Notification Alert',
       message: `You received a notification for the device: ${device_name}. Variable: ${scope[0].variable}, Value: ${scope[0].value}`,
-    }).then(context.log).catch(context.log);
+    }).then(console.log).catch(console.log);
   } else {
-    context.log('User ID not found for this device.');
+    console.log('User ID not found for this device.');
   }
 
-  context.log('Script end.');
+  console.log('Script end.');
 }
 
 module.exports = new Analysis(init);
