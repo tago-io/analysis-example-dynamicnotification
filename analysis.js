@@ -18,7 +18,7 @@
 
 const { Analysis, Services, Resources } = require('@tago-io/sdk');
 
-async function init(context, scope) {
+async function startAnalysis(context, scope) {
   if (!scope[0]) {
     return context.log('This analysis must be triggered by an action.');
   }
@@ -79,4 +79,4 @@ async function init(context, scope) {
   console.log('Script end.');
 }
 
-module.exports = new Analysis(init);
+Analysis.use(startAnalysis);
